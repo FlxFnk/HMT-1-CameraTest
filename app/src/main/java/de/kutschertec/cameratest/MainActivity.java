@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
             while (running) {
                 for (int i = 0; i < buffer.length; i++) {
-                    logger.info("Working");
+//                    logger.info("Working");
                     buffer[i] = (byte) random.nextInt();
                 }
             }
