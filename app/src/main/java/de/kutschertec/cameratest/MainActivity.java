@@ -6,6 +6,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Process;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -16,6 +19,7 @@ import android.view.Window;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +29,25 @@ public class MainActivity extends AppCompatActivity {
     private final Logger logger = new Logger(this);
 
     private CameraController cameraController;
+
+    private Thread workerThread;
+
+    private byte[] buffer = new byte[1024 * 1024 * 10];
+    private Random random = new Random();
+    private boolean running = false;
+    private Runnable work = new Runnable() {
+        @Override
+        public void run() {
+            running = true;
+
+            while (running) {
+                for (int i = 0; i < buffer.length; i++) {
+                    logger.info("Working");
+                    buffer[i] = (byte) random.nextInt();
+                }
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +59,22 @@ public class MainActivity extends AppCompatActivity {
             initComponents();
         }
 
+        workerThread = new Thread(work, "WorkerThread");
+        workerThread.start();
     }
 
     @Override
     protected void onDestroy() {
         logger.verbose("MainActivity.onDestroy()");
         super.onDestroy();
+
+        try {
+            running = false;
+            workerThread.interrupt();
+            workerThread.join();
+        } catch (InterruptedException e) {
+            Thread.interrupted();
+        }
 
         logger.debug("Removing lifecyle observers.");
         getLifecycle().removeObserver(cameraController);
