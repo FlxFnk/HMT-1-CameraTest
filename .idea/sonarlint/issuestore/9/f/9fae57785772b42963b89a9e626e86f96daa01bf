@@ -1,0 +1,27 @@
+
+^squid:S2142Š"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+jsquid:CommentedOutCodeLineá"<This block of commented-out lines of code should be removed.(„©èå8ÿëø‰-
+^squid:S00112×"FDefine and throw a dedicated exception instead of using a generic one.(¯ÌÉ8
+|squid:S1149„"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(¾»ôûÿÿÿÿÿ
+Wsquid:S3398Ì"?Move this method into the anonymous class declared at line 710.(ìÀíå
+Vsquid:UselessImportCheck"-Remove this unused import 'android.util.Log'.(Ô¦Ø²øÿÿÿÿ
+osquid:S1192ý"WDefine a constant instead of duplicating this literal "Closing camera device." 3 times.(Àäýª
+bsquid:CommentedOutCodeLine3"<This block of commented-out lines of code should be removed.(è¡Ÿµ
+ssquid:S1192ò"\Define a constant instead of duplicating this literal "Releasing camera semaphore." 3 times.(€Å=
+hsquid:CommentedOutCodeLine¯"<This block of commented-out lines of code should be removed.(’ðÌ‡ûÿÿÿÿ
+csquid:CommentedOutCodeLine©"<This block of commented-out lines of code should be removed.(÷‡Ëº
+^squid:S2142Ó"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+|squid:S1149é"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(ŒÏˆ§üÿÿÿÿ
+_squid:S00112‹"FDefine and throw a dedicated exception instead of using a generic one.(¨åÖ¦
+hsquid:CommentedOutCodeLineÐ"<This block of commented-out lines of code should be removed.(Š¸±ïüÿÿÿÿ
+hsquid:CommentedOutCodeLine§"<This block of commented-out lines of code should be removed.(Ç©¿“øÿÿÿÿ
+_squid:S00112æ"FDefine and throw a dedicated exception instead of using a generic one.(Þ¥‹«
+hsquid:CommentedOutCodeLineã"<This block of commented-out lines of code should be removed.(­„À¸þÿÿÿÿ
+?squid:S1604c"(Make this anonymous inner class a lambda(Ôæò×
+csquid:CommentedOutCodeLineØ"<This block of commented-out lines of code should be removed.(åüì‰
+hsquid:CommentedOutCodeLineì"<This block of commented-out lines of code should be removed.(ûÅÜ‰ÿÿÿÿÿ
+^squid:S2142å"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+^squid:S2142¯"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+}squid:S1192€"`Define a constant instead of duplicating this literal "Closing camera device ... done." 3 times.(ðþŸ½øÿÿÿÿ
+osquid:CommentedOutCodeLine•"<This block of commented-out lines of code should be removed.(’í¸üÿÿÿÿ8»íôø‰-
+Psquid:S1197†"8Move the array designator from the variable to the type.(«¥éÔ

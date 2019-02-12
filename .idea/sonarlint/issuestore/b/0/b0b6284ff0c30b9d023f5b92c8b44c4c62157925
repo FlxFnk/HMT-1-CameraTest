@@ -1,0 +1,11 @@
+
+esquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(²Ú±Ž
+?squid:S1604&"(Make this anonymous inner class a lambda(Ó§×þ
+Xsquid:UselessImportCheck"/Remove this unused import 'android.os.Process'.(’ºüíþÿÿÿÿ
+]squid:S2142K"FEither re-interrupt this method or rethrow the "InterruptedException".(ä ¹€
+Ksquid:S1066Y"/Merge this if statement with the enclosing one.(ÍãÖúýÿÿÿÿ
+hsquid:CommentedOutCodeLine…"<This block of commented-out lines of code should be removed.(ÌÆ‰äüÿÿÿÿ
+Nsquid:S2589+"7Remove this expression which always evaluates to "true"(›ûÅò
+^squid:UselessImportCheck
+"5Remove this unused import 'android.os.HandlerThread'.(±³Š×üÿÿÿÿ
+isquid:CommentedOutCodeLine-"<This block of commented-out lines of code should be removed.(ÙÙ—Û8©êÏô‰-

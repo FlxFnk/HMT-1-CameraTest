@@ -529,7 +529,8 @@ public class Camera2Component implements CameraController {
             logger.debug("Available camera FPS ranges: " + ranges.toString());
 
             logger.debug("Creating JPEG image reader.");
-            jpegImageReader = ImageReader.newInstance(jpegOutputSize.getWidth(), jpegOutputSize.getHeight(), ImageFormat.JPEG, 2);
+            jpegImageReader = ImageReader.newInstance(jpegOutputSize.getWidth(), jpegOutputSize.getHeight(), ImageFormat.YUV_420_888, 2);
+            //jpegImageReader = ImageReader.newInstance(jpegOutputSize.getWidth(), jpegOutputSize.getHeight(), ImageFormat.JPEG, 2);
             jpegImageReader.setOnImageAvailableListener(this::onImageAvailable, backgroundHandler);
             logger.debug("Creating JPEG image reader ... done.");
 
@@ -563,14 +564,15 @@ public class Camera2Component implements CameraController {
         try {
             Image image = imageReader.acquireLatestImage();
             if (image != null) {
-                ByteBuffer originalBuffer = image.getPlanes()[0].getBuffer();
+                boolean mirror = getJpegOrientation() == 180;
+                byte[] originalBuffer = ImageUtils.imageToByteArray(image, jpegQuality, mirror);
 
                 boolean permit = false;
                 try {
                     permit = imageBufferSemaphore.tryAcquire();
                     if ((permit) && (!frozen)) {
-                        if (originalBuffer.remaining() > imageBuffer.capacity()) {
-                            imageBuffer = ByteBuffer.allocate(originalBuffer.remaining());
+                        if (originalBuffer.length > imageBuffer.capacity()) {
+                            imageBuffer = ByteBuffer.allocate(originalBuffer.length);
                         }
 
                         imageBuffer.clear();
@@ -604,7 +606,8 @@ public class Camera2Component implements CameraController {
 
         try {
             logger.debug("Create new capture session.");
-            cameraDevice.createCaptureSession(Arrays.asList(surface, jpegImageReader.getSurface()), new CameraCaptureSession.StateCallback() {
+              cameraDevice.createCaptureSession(Arrays.asList(surface, jpegImageReader.getSurface()), new CameraCaptureSession.StateCallback() {
+    //        cameraDevice.createCaptureSession(Arrays.asList(surface), new CameraCaptureSession.StateCallback() {
                 @Override
                 public void onConfigured(@NonNull CameraCaptureSession session) {
                     logger.verbose("Camera2Component.StateCallback.onConfigured()");
